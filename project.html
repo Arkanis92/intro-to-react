@@ -12,18 +12,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
 
     <script type="text/babel">
+
        class Project extends React.Component {
+         constructor(props) {
+           super(props);
+           this.state = { count: 0 }
+         }
+
+         handleClick(event) {
+           this.setState({
+             count: this.state.count + 1
+           })
+         }
+
          render() {
            return (
-              <div>
-                <button className = 'Test'>This is a Test</button>
-              </div>
+              <button onClick={this.handleClick.bind(this)}>Clicks: {this.state.count}</button>
            );
          }
        }
 
        ReactDOM.render(
-          <Project />, document.getElementById('app')
+          <Project />, document.getElementById("app")
        );
     </script>
   </body>
