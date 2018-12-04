@@ -14,12 +14,13 @@
     <script type="text/babel">
 
        class Project extends React.Component {
-         constructor(props) {
-           super(props);
+         constructor() {
+           super();
            this.state = { count: 0 }
+           this.handleClick = this.handleClick.bind(this)
          }
 
-         handleClick(event) {
+         handleClick() {
            this.setState({
              count: this.state.count + 1
            })
@@ -27,13 +28,16 @@
 
          render() {
            return (
-              <button onClick={this.handleClick.bind(this)}>Clicks: {this.state.count}</button>
+              <button onClick={this.handleClick}>Clicks: {this.state.count}</button>
            );
          }
        }
 
        ReactDOM.render(
-          <Project />, document.getElementById("app")
+          <div>
+            <Project title="Hello" name={() => { console.log('function')}} />
+            <Project name="Bob" />
+          </div>, document.getElementById("app")
        );
     </script>
   </body>
